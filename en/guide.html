@@ -4,51 +4,94 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>User guide | KoePic</title>
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0F24;--bg2:#1E2550;--card:rgba(255,255,255,.08);--text:#fff;--muted:#CED4EC;--accent:#6FD6FF}
+:root{--bg:#0A0F24;--bg2:#141B3D;--bg3:#1E2550;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.12);--text:#fff;--muted:#CED4EC;--accent:#6FD6FF;--orange:#FF8A65;--radius:20px}
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(#0A0F24,#141B3D 50%,#1E2550);background-attachment:fixed;color:var(--text);
-font:17px/1.75 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
-main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
-h1{font-size:30px;line-height:1.3;margin:8px 0 4px}
-h2{font-size:21px;margin:32px 0 8px;color:var(--accent)}
-p,li{color:var(--muted)}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font:16.5px/1.85 "M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+ background:radial-gradient(900px 600px at 85% -10%,rgba(46,143,214,.35),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(74,98,217,.28),transparent 60%),radial-gradient(800px 600px at 110% 90%,rgba(255,138,101,.16),transparent 60%),linear-gradient(#0A0F24,#141B3D 45%,#1E2550);background-color:#141B3D;min-height:100vh}
+html{background:#141B3D}
 a{color:var(--accent)}
-.card{background:var(--card);border-radius:14px;padding:4px 20px;margin:16px 0}
-.lang{float:right;font-size:15px}
-.updated{color:var(--muted);font-size:15px}
-nav a{display:inline-block;margin:0 16px 8px 0}
+img{max-width:100%;display:block}
+.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,15,36,.72);border-bottom:1px solid var(--line)}
+.top .in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:800;font-size:18px}
+.brand img{width:34px;height:34px;border-radius:9px}
+.top nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.top nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:700;padding:6px 10px;border-radius:999px}
+.top nav a:hover,.top nav a.on{color:var(--text);background:rgba(255,255,255,.1)}
+.top nav a.lang{border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:36px 16px 72px}
+main.wide{max-width:1080px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.3;margin:6px 0 6px;font-weight:800}
+h2{font-size:22px;margin:36px 0 10px;color:var(--accent);line-height:1.4}
+p,li{color:var(--muted)}
+b{color:var(--text)}
+.updated{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:6px 22px;margin:16px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:28px 16px;text-align:center;color:var(--muted);font-size:14px}
+footer a{margin:0 8px}
+/* 使い方ガイド */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin:8px 0 30px}
+.hero img.icon{width:112px;height:112px;border-radius:26px;box-shadow:0 18px 50px rgba(46,143,214,.45)}
+.hero .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--orange);background:rgba(255,138,101,.12);border:1px solid rgba(255,138,101,.35);padding:3px 12px;border-radius:999px}
+.hero p{margin:6px 0 0;font-size:17px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:10px 0 34px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px 16px 20px;text-align:center}
+.step .num{display:inline-flex;width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;background:var(--accent);color:#0A0F24;font-weight:900;margin-bottom:8px}
+.step h3{margin:0 0 4px;font-size:19px}
+.step p{margin:0 0 14px;font-size:14.5px;line-height:1.7}
+.phone{width:100%;max-width:230px;margin:0 auto;border-radius:30px;padding:7px;background:linear-gradient(145deg,#2a3368,#0b0f22);box-shadow:0 20px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.12)}
+.phone img{border-radius:24px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.toc a{text-decoration:none;color:var(--text);background:rgba(255,255,255,.08);border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-weight:700;font-size:14px}
+.toc a:hover{background:rgba(111,214,255,.18);border-color:var(--accent)}
+.sec{display:grid;grid-template-columns:1fr 230px;gap:28px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px 26px 22px;margin:22px 0;scroll-margin-top:80px}
+.sec.noimg{grid-template-columns:1fr}
+.sec:nth-of-type(even){grid-template-columns:230px 1fr}
+.sec:nth-of-type(even) .phone{order:-1}
+.sec.noimg:nth-of-type(even){grid-template-columns:1fr}
+.sec h2{margin:0 0 6px;display:flex;align-items:center;gap:10px}
+.sec h2 .em{display:inline-flex;width:42px;height:42px;border-radius:14px;align-items:center;justify-content:center;font-size:22px;background:rgba(111,214,255,.14);flex:0 0 auto}
+.sec ul{padding-left:1.2em;margin:8px 0 0}
+.sec li{margin:6px 0}
+.sec li::marker{color:var(--accent)}
+.back{display:inline-block;margin-top:6px;font-size:14px;text-decoration:none;color:var(--muted)}
+@media (max-width:760px){
+ .hero{grid-template-columns:1fr;text-align:center}.hero img.icon{margin:0 auto}
+ .steps{grid-template-columns:1fr}
+ .sec,.sec:nth-of-type(even){grid-template-columns:1fr;padding:22px 18px}
+ .sec:nth-of-type(even) .phone{order:0}
+ .phone{max-width:200px}
+ .steps .phone{max-width:170px}
+}
 </style>
 </head>
-<body><main>
-<a class="lang" href="../ja/guide.html">日本語</a>
-<nav><a href="../index.html">KoePic</a><a href="guide.html">Guide</a><a href="voices.html">Voices</a><a href="support.html">Support</a></nav>
-<h1>User guide</h1>
-<p class="updated">Last updated: November 3, 2026</p>
-<h2 id="start">Getting started: 3 steps</h2>
-<p>KoePic organizes photos in 3 steps: take a photo, say where it goes, say “Yes” to save. Where you can’t speak, buttons and typing do the same.</p>
-<ul><li><b>1. Take a photo</b> with the KoePic camera (photos from your phone’s camera can be sorted from “Unsorted”)</li><li><b>2. Say where it goes</b>, like “Work Site A”</li><li><b>3. Say “Yes”</b> when asked “Save here?”, or tap “OK (Save)”</li></ul>
-<h2 id="camera">Taking photos</h2>
-<ul><li>“One by one” asks where to save after each photo. “Burst” lets you take several, then save them together with “Sort now”.</li><li>Switch between photo and video. Tap the shutter again to stop a video.</li><li>Zoom by pinching or with the slider. On iPhone, the 0.5× / 1× / Tele buttons switch lenses.</li><li>If you close the app without saving, the photos are kept and shown the next time you open it.</li></ul>
-<h2 id="voice">Saying where to save</h2>
-<ul><li>After you take a photo, KoePic asks “Which folder should this go in?” and starts listening.</li><li>Say one name (“Work”) or two levels (“Work Site A”, a folder inside a folder).</li><li>A new name creates a new folder. If a similar folder exists, KoePic asks whether to use it.</li><li>Say “Yes” or “OK”, or tap “OK (Save)”, to save. Nothing is saved without your confirmation.</li><li>If nothing is heard for about 3 seconds, KoePic stops listening and highlights the folder buttons and “Create a new folder”.</li><li>The first time, allow the microphone and speech recognition (you can change this in your phone’s Settings).</li></ul>
-<h2 id="name">Save with a name (no folders needed)</h2>
-<ul><li>Tap “📝 Save with a name”, then say or type a name like “Scratch on the door”. Photos are saved in the “Photos” folder.</li><li>Search by part of the name later. Open a photo and tap “✏️ Rename” to change or remove the name.</li></ul>
-<h2 id="unsorted">Unsorted (photos from your phone’s camera)</h2>
-<ul><li>Shows photos and videos on your phone that you haven’t sorted yet, including those taken with the built-in camera.</li><li>In the grid, tap tiles to select several and sort them together. You can also go one by one, or by groups taken close together.</li><li>“Later” skips for now; “Don’t sort” hides a photo from this list.</li><li>After using the built-in camera, KoePic tells you how many new photos there are and offers to sort them.</li></ul>
-<h2 id="albums">Finding photos</h2>
-<ul><li>Type in the search box or tap “🎤 Search by voice”. Combine photo names, folders, dates (“last week”) and photo/video (e.g. “videos from Trip last week”).</li><li>Quick buttons: Today, This week, Photos, Videos. With no search, the folder list is shown.</li></ul>
-<h2 id="folder">Inside a folder</h2>
-<ul><li>Switch between tiles and calendar. Tap a photo to view it large (previous, next, share, name).</li><li>“Select” lets you move, delete, share (one), or export ZIP/PDF (KoePic Pro).</li><li>“🗑 Delete this folder” removes the folder; “Delete the folder only” keeps the photos and puts them back in Unsorted.</li></ul>
-<h2 id="lockscreen">Open the KoePic camera from the Lock Screen</h2>
-<p>Put a “KoePic Camera” button where the built-in camera button is (iPhone: iOS 18 or later).</p>
-<ul><li><b>Lock Screen</b>: touch and hold the Lock Screen (unlocked with Face ID) → Customize → Lock Screen → remove a bottom button with “−” → “+” → KoePic Camera → Done</li><li><b>Control Center</b>: swipe down from the top right → touch and hold an empty area → Add a Control → search “KoePic”</li><li><b>Action button</b> (iPhone 15 Pro or later): Settings → Action Button → Controls → KoePic Camera</li><li><b>Android</b>: add the “KoePic Camera” tile to Quick Settings, or long-press the app icon for “Take a photo”.</li></ul>
-<h2 id="settings">Settings</h2>
-<ul><li>Text and button size, color, auto-rotate, frosted glass, and where to save (your Photos albums, recommended, or inside KoePic only).</li></ul>
-<h2 id="backup">Backup</h2>
-<ul><li>“Export a backup” saves folders and sorting records to one file; use “Save to Files” to keep it in iCloud Drive or Google Drive. “Restore from a backup” brings it back. KoePic Pro backs up automatically once a day.</li></ul>
-<h2 id="pro">KoePic Pro</h2>
-<p>Unlimited folders (5 on the free plan), ZIP/PDF export, automatic backup and no ads. Monthly, yearly or one-time. After changing phones, tap “Restore purchases”.</p>
-<h2 id="faq">Troubleshooting</h2>
-<ul><li><b>Voice not heard</b>: tap “Speak again” and speak right away; check microphone and speech recognition permissions.</li><li><b>Camera photos missing from Unsorted</b>: check that Photos access for KoePic is set to “Full Access”.</li><li><b>Requests or problems</b>: Settings → “💬 Send feedback or requests”, or email <a href="mailto:koepic.support@gmail.com">koepic.support@gmail.com</a>.</li></ul>
-</main></body></html>
+<body>
+<header class="top"><div class="in">
+<a class="brand" href="../index.html"><img src="../images/icon.png" alt="">KoePic</a>
+<nav><a href="guide.html" class="on">Guide</a><a href="voices.html">Voices</a><a href="support.html">Support</a><a class="lang" href="../ja/guide.html">日本語</a></nav>
+</div></header>
+<main class="wide">
+
+
+<div id="top"></div><section class="hero"><img class="icon" src="../images/icon.png" alt=""><div><span class="kicker">User guide</span><h1>How to use KoePic</h1><p>Snap. Say the folder. Save. Your photos are sorted by voice or tap.</p></div></section>
+<div class="steps"><div class="step"><div class="num">1</div><h3>Take a photo</h3><p>Use the KoePic camera</p><div class="phone"><img src="../images/en/camera.jpg" alt="Take a photo" loading="lazy" width="390" height="844"></div></div><div class="step"><div class="num">2</div><h3>Say where it goes</h3><p>Like “Work Site A”</p><div class="phone"><img src="../images/en/voice.jpg" alt="Say where it goes" loading="lazy" width="390" height="844"></div></div><div class="step"><div class="num">3</div><h3>Say “Yes” to save</h3><p>Nothing is saved without your OK</p><div class="phone"><img src="../images/en/confirm.jpg" alt="Say “Yes” to save" loading="lazy" width="390" height="844"></div></div></div>
+<h2 style="margin-top:0">Contents</h2><div class="toc"><a href="#start">🚀 Getting started: 3 steps</a><a href="#camera">📷 Taking photos</a><a href="#voice">🎤 Saying where to save</a><a href="#name">📝 Save with a name (no folders needed)</a><a href="#unsorted">📥 Unsorted (photos from your phone’s camera)</a><a href="#albums">🔍 Finding photos</a><a href="#folder">📁 Inside a folder</a><a href="#lockscreen">🔒 Open the KoePic camera from the Lock Screen</a><a href="#settings">⚙️ Settings</a><a href="#backup">💾 Backup</a><a href="#pro">⭐ KoePic Pro</a><a href="#faq">💡 Troubleshooting</a></div>
+<section class="sec noimg" id="start"><div><h2><span class="em">🚀</span>Getting started: 3 steps</h2><p>KoePic organizes photos in 3 steps: take a photo, say where it goes, say “Yes” to save. Where you can’t speak, buttons and typing do the same.</p><ul><li><b>1. Take a photo</b> with the KoePic camera (photos from your phone’s camera can be sorted from “Unsorted”)</li><li><b>2. Say where it goes</b>, like “Work Site A”</li><li><b>3. Say “Yes”</b> when asked “Save here?”, or tap “OK (Save)”</li></ul><a class="back" href="#top">↑ Back to top</a></div></section>
+<section class="sec" id="camera"><div><h2><span class="em">📷</span>Taking photos</h2><ul><li>“One by one” asks where to save after each photo. “Burst” lets you take several, then save them together with “Sort now”.</li><li>Switch between photo and video. Tap the shutter again to stop a video.</li><li>Zoom by pinching or with the slider. On iPhone, the 0.5× / 1× / Tele buttons switch lenses.</li><li>If you close the app without saving, the photos are kept and shown the next time you open it.</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/camera.jpg" alt="Taking photos" loading="lazy" width="390" height="844"></div></section>
+<section class="sec" id="voice"><div><h2><span class="em">🎤</span>Saying where to save</h2><ul><li>After you take a photo, KoePic asks “Which folder should this go in?” and starts listening.</li><li>Say one name (“Work”) or two levels (“Work Site A”, a folder inside a folder).</li><li>A new name creates a new folder. If a similar folder exists, KoePic asks whether to use it.</li><li>Say “Yes” or “OK”, or tap “OK (Save)”, to save. Nothing is saved without your confirmation.</li><li>If nothing is heard for about 3 seconds, KoePic stops listening and highlights the folder buttons and “Create a new folder”.</li><li>The first time, allow the microphone and speech recognition (you can change this in your phone’s Settings).</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/voice.jpg" alt="Saying where to save" loading="lazy" width="390" height="844"></div></section>
+<section class="sec" id="name"><div><h2><span class="em">📝</span>Save with a name (no folders needed)</h2><ul><li>Tap “📝 Save with a name”, then say or type a name like “Scratch on the door”. Photos are saved in the “Photos” folder.</li><li>Search by part of the name later. Open a photo and tap “✏️ Rename” to change or remove the name.</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/name.jpg" alt="Save with a name (no folders needed)" loading="lazy" width="390" height="844"></div></section>
+<section class="sec" id="unsorted"><div><h2><span class="em">📥</span>Unsorted (photos from your phone’s camera)</h2><ul><li>Shows photos and videos on your phone that you haven’t sorted yet, including those taken with the built-in camera.</li><li>In the grid, tap tiles to select several and sort them together. You can also go one by one, or by groups taken close together.</li><li>“Later” skips for now; “Don’t sort” hides a photo from this list.</li><li>After using the built-in camera, KoePic tells you how many new photos there are and offers to sort them.</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/unsorted.jpg" alt="Unsorted (photos from your phone’s camera)" loading="lazy" width="390" height="844"></div></section>
+<section class="sec" id="albums"><div><h2><span class="em">🔍</span>Finding photos</h2><ul><li>Type in the search box or tap “🎤 Search by voice”. Combine photo names, folders, dates (“last week”) and photo/video (e.g. “videos from Trip last week”).</li><li>Quick buttons: Today, This week, Photos, Videos. With no search, the folder list is shown.</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/albums.jpg" alt="Finding photos" loading="lazy" width="390" height="844"></div></section>
+<section class="sec noimg" id="folder"><div><h2><span class="em">📁</span>Inside a folder</h2><ul><li>Switch between tiles and calendar. Tap a photo to view it large (previous, next, share, name).</li><li>“Select” lets you move, delete, share (one), or export ZIP/PDF (KoePic Pro).</li><li>“🗑 Delete this folder” removes the folder; “Delete the folder only” keeps the photos and puts them back in Unsorted.</li></ul><a class="back" href="#top">↑ Back to top</a></div></section>
+<section class="sec" id="lockscreen"><div><h2><span class="em">🔒</span>Open the KoePic camera from the Lock Screen</h2><p>Put a “KoePic Camera” button where the built-in camera button is (iPhone: iOS 18 or later).</p><ul><li><b>Lock Screen</b>: touch and hold the Lock Screen (unlocked with Face ID) → Customize → Lock Screen → remove a bottom button with “−” → “+” → KoePic Camera → Done</li><li><b>Control Center</b>: swipe down from the top right → touch and hold an empty area → Add a Control → search “KoePic”</li><li><b>Action button</b> (iPhone 15 Pro or later): Settings → Action Button → Controls → KoePic Camera</li><li><b>Android</b>: add the “KoePic Camera” tile to Quick Settings, or long-press the app icon for “Take a photo”.</li></ul><a class="back" href="#top">↑ Back to top</a></div><div class="phone"><img src="../images/en/lockscreen.jpg" alt="Open the KoePic camera from the Lock Screen" loading="lazy" width="390" height="844"></div></section>
+<section class="sec noimg" id="settings"><div><h2><span class="em">⚙️</span>Settings</h2><ul><li>Text and button size, color, auto-rotate, frosted glass, and where to save (your Photos albums, recommended, or inside KoePic only).</li></ul><a class="back" href="#top">↑ Back to top</a></div></section>
+<section class="sec noimg" id="backup"><div><h2><span class="em">💾</span>Backup</h2><ul><li>“Export a backup” saves folders and sorting records to one file; use “Save to Files” to keep it in iCloud Drive or Google Drive. “Restore from a backup” brings it back. KoePic Pro backs up automatically once a day.</li></ul><a class="back" href="#top">↑ Back to top</a></div></section>
+<section class="sec noimg" id="pro"><div><h2><span class="em">⭐</span>KoePic Pro</h2><p>Unlimited folders (5 on the free plan), ZIP/PDF export, automatic backup and no ads. Monthly, yearly or one-time. After changing phones, tap “Restore purchases”.</p><a class="back" href="#top">↑ Back to top</a></div></section>
+<section class="sec noimg" id="faq"><div><h2><span class="em">💡</span>Troubleshooting</h2><ul><li><b>Voice not heard</b>: tap “Speak again” and speak right away; check microphone and speech recognition permissions.</li><li><b>Camera photos missing from Unsorted</b>: check that Photos access for KoePic is set to “Full Access”.</li><li><b>Requests or problems</b>: Settings → “💬 Send feedback or requests”, or email <a href="mailto:koepic.support@gmail.com">koepic.support@gmail.com</a>.</li></ul><a class="back" href="#top">↑ Back to top</a></div></section>
+</main>
+<footer><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="support.html">Support</a><div style="margin-top:10px">© Koepic-Technologies</div></footer>
+</body></html>
